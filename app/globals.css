@@ -1,26 +1,144 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+  Palette sampled from the cover artwork. Keeping one copper accent and one
+  deep navy prevents the page from introducing a second visual language.
+*/
+@theme {
+  --color-paper: #f7f0e4;
+  --color-sand: #eadcc7;
+  --color-ink: #172b45;
+  --color-copper: #9c4f2a;
+  --color-copper-deep: #7e3e20;
+  --color-sea: #2d5c6b;
+  --color-line: #d9cbb6;
+  --color-muted: #5a6472;
 }
 
+/*
+  `inline` lets Tailwind resolve the Next.js font variables at build time
+  instead of emitting an extra layer of custom properties.
+*/
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-fraunces);
+  --font-body: var(--font-newsreader);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-newsreader), Georgia, "Times New Roman", serif;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  /* Anchor targets clear the sticky header. */
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+
+  ::selection {
+    background-color: var(--color-copper);
+    color: var(--color-paper);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-copper);
+    outline-offset: 3px;
+  }
+
+  /* The copper outline disappears on the two dark bands. */
+  [data-tone="dark"] :focus-visible,
+  [data-tone="copper"] :focus-visible {
+    outline-color: var(--color-paper);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /*
+    Underline that draws from left to right. Positioned from the vertical
+    centre rather than the box edge, because the same utility sits on 44px
+    tap targets whose text is only 14px tall.
+  */
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-position: 0 calc(50% + 0.7em);
+    background-size: 0% 1px;
+    transition: background-size 220ms ease;
+  }
+
+  .link-underline:hover,
+  .link-underline:focus-visible {
+    background-size: 100% 1px;
+  }
+
+  .hero-enter {
+    animation: hero-rise 720ms cubic-bezier(0.22, 0.7, 0.28, 1) both;
+  }
+
+  .menu-panel {
+    animation: menu-drop 260ms cubic-bezier(0.22, 0.7, 0.28, 1) both;
+  }
+
+  .menu-scrim {
+    animation: menu-fade 220ms ease-out both;
+  }
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes menu-drop {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes menu-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
