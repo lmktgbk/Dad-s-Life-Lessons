@@ -60,6 +60,9 @@ export function InsideSection({ book, inside }: InsideSectionProps) {
               </p>
               <div aria-hidden className="mt-8 h-px w-10 bg-copper" />
               <p className="mt-5 text-sm leading-6 text-ink/70">
+                {inside.audience}
+              </p>
+              <p className="mt-4 text-xs leading-5 text-muted">
                 {inside.panelNote}
               </p>
             </div>

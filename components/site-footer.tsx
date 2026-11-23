@@ -59,7 +59,7 @@ export function SiteFooter({
                       href="#subscribe"
                       className="link-underline inline-flex min-h-11 items-center text-sm text-paper/80 hover:text-paper"
                     >
-                      Join the list
+                      Weekly lesson
                     </a>
                   </li>
                 </ul>
@@ -82,7 +82,7 @@ export function SiteFooter({
                     href={purchaseUrl}
                     className="link-underline inline-flex min-h-11 items-center text-sm text-paper/80 hover:text-paper"
                   >
-                    Pre-order the book
+                    Order the book
                   </a>
                 </div>
               </div>

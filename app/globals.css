@@ -42,7 +42,7 @@
     text-wrap: balance;
   }
 
-  /* Anchor targets clear the sticky header. */
+  /* Anchor targets clear the fixed header. */
   section[id] {
     scroll-margin-top: 5rem;
   }

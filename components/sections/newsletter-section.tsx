@@ -8,12 +8,6 @@ type NewsletterSectionProps = {
   email: string;
 };
 
-const benefits = [
-  "The order link when the book opens",
-  "A sample chapter before launch",
-  "First word on the course",
-] as const;
-
 /*
   The pitch and the form are both short, so pairing them alone leaves a tall
   copper void under the form. The benefits move to a full-width strip beneath
@@ -32,7 +26,7 @@ export function NewsletterSection({
       <Container>
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-6">
-            <SectionLabel tone="paper">The Pre-Order List</SectionLabel>
+            <SectionLabel tone="paper">{newsletter.label}</SectionLabel>
 
             <h2 className="mt-5 max-w-[16ch] font-display text-[clamp(2.4rem,4.2vw,3.8rem)] leading-[1.0] tracking-[-0.015em]">
               {newsletter.heading}
@@ -44,15 +38,12 @@ export function NewsletterSection({
           </div>
 
           <div className="lg:col-span-5 lg:col-start-8 lg:pt-2">
-            <NewsletterForm email={email} />
-            <p className="mt-4 max-w-md text-sm leading-6 text-paper">
-              {newsletter.note}
-            </p>
+            <NewsletterForm email={email} note={newsletter.note} />
           </div>
         </div>
 
         <ul className="mt-12 border-t border-paper/25 sm:mt-14 md:grid md:grid-cols-3 md:gap-x-8">
-          {benefits.map((benefit, index) => (
+          {newsletter.benefits.map((benefit, index) => (
             <li
               key={benefit}
               className="flex items-baseline gap-3 border-b border-paper/20 py-4 md:border-b-0 md:py-5"

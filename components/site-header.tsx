@@ -26,7 +26,7 @@ export function SiteHeader({ nav, purchaseUrl }: SiteHeaderProps) {
             <span className="whitespace-nowrap font-display text-xl font-semibold tracking-tight md:text-2xl">
               Dad&apos;s Life Lessons
             </span>
-            <span className="hidden text-[0.625rem] uppercase tracking-[0.18em] text-muted lg:inline">
+            <span className="hidden text-[0.625rem] uppercase tracking-[0.18em] text-muted xl:inline">
               by Justin Matthew
             </span>
           </a>
@@ -51,11 +51,12 @@ export function SiteHeader({ nav, purchaseUrl }: SiteHeaderProps) {
               Hidden from the wrapper rather than the link. `ButtonLink` already
               sets `inline-flex`, and Tailwind emits `.hidden` before it, so a
               `hidden` class on the link itself would be overridden.
+
+              Only from `lg` up: with four nav items beside it, the bar has no
+              room for both at 768.
             */}
-            <div className="hidden sm:block">
-              <ButtonLink href={purchaseUrl} variant="quiet">
-                Pre-order
-              </ButtonLink>
+            <div className="hidden lg:block">
+              <ButtonLink href={purchaseUrl}>Order the book</ButtonLink>
             </div>
             <MobileMenu nav={nav} purchaseUrl={purchaseUrl} />
           </div>

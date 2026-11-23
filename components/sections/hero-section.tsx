@@ -11,10 +11,7 @@ type HeroSectionProps = {
 
 export function HeroSection({ book, purchaseUrl }: HeroSectionProps) {
   return (
-    <section
-      id="book"
-      className="border-b border-line/70 bg-paper"
-    >
+    <section id="book" className="border-b border-line/70 bg-paper">
       <Container className="grid min-h-[calc(100svh-4rem)] items-center gap-12 py-14 md:min-h-[calc(100svh-72px)] md:py-16 lg:grid-cols-12 lg:gap-8 lg:py-20">
         <div className="lg:col-span-6">
           <div className="hero-enter">
@@ -43,7 +40,7 @@ export function HeroSection({ book, purchaseUrl }: HeroSectionProps) {
             style={{ animationDelay: "180ms" }}
           >
             <ButtonLink href={purchaseUrl} className="w-full sm:w-auto">
-              Pre-order the book
+              Choose your edition
             </ButtonLink>
             <ButtonLink href="#inside" variant="quiet">
               See what&apos;s inside

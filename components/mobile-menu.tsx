@@ -234,7 +234,7 @@ export function MobileMenu({ nav, purchaseUrl }: MobileMenuProps) {
                 onClick={leaveSheet}
                 className="group flex min-h-14 items-center justify-between gap-4 bg-copper px-5 py-3 text-sm font-medium tracking-wide text-paper transition-colors duration-200 hover:bg-copper-deep active:translate-y-px"
               >
-                Pre-order the book
+                Order the book
                 <svg
                   aria-hidden
                   viewBox="0 0 24 24"
