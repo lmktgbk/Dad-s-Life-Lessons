@@ -43,7 +43,7 @@ export function SiteFooter({
                   Explore
                 </p>
                 {/* Column cells stay left-aligned so the grid keeps a square edge. */}
-                <ul className="mt-3 grid w-fit grid-cols-2 gap-x-8 text-left md:mt-4">
+                <ul className="mt-3 grid w-fit grid-cols-2 gap-x-8 text-right md:mt-4">
                   {nav.map((item) => (
                     <li key={item.href}>
                       <a
